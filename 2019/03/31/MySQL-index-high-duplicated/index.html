@@ -99,25 +99,27 @@
 
 
 
-  <meta name="description" content="1print(&amp;apos;Hello World!&amp;apos;)">
-<meta name="keywords" content="Hello World">
+  <meta name="description" content="在学习MySQL时基本都被灌输过这个思想：重复度高的字段不适合做索引，可能会导致查询更慢。当时只是记住了这个结论，没有做深入探究。回头再看下这个问题，有一点疑惑：按理说MySQL的解释器应该没这么傻吧，如果走索引比全表扫描更慢，它不会自己切到全表扫描吗？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/03/19/hello-world/index.html">
+<meta property="og:title" content="MySQL高重复字段索引查询探究">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/MySQL-index-high-duplicated/index.html">
 <meta property="og:site_name" content="Neo">
-<meta property="og:description" content="1print(&amp;apos;Hello World!&amp;apos;)">
+<meta property="og:description" content="在学习MySQL时基本都被灌输过这个思想：重复度高的字段不适合做索引，可能会导致查询更慢。当时只是记住了这个结论，没有做深入探究。回头再看下这个问题，有一点疑惑：按理说MySQL的解释器应该没这么傻吧，如果走索引比全表扫描更慢，它不会自己切到全表扫描吗？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T13:46:31.151Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8573125-31e193838e1f9d5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/890/format/webp">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201106/7/8394323_13074405911zG7.jpg">
+<meta property="og:updated_time" content="2019-03-31T08:15:10.241Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="1print(&amp;apos;Hello World!&amp;apos;)">
+<meta name="twitter:title" content="MySQL高重复字段索引查询探究">
+<meta name="twitter:description" content="在学习MySQL时基本都被灌输过这个思想：重复度高的字段不适合做索引，可能会导致查询更慢。当时只是记住了这个结论，没有做深入探究。回头再看下这个问题，有一点疑惑：按理说MySQL的解释器应该没这么傻吧，如果走索引比全表扫描更慢，它不会自己切到全表扫描吗？">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/8573125-31e193838e1f9d5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/890/format/webp">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/19/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/31/MySQL-index-high-duplicated/">
 
 
 
@@ -127,7 +129,7 @@
   };
 </script>
 
-  <title>Hello World | Neo</title>
+  <title>MySQL高重复字段索引查询探究 | Neo</title>
   
 
 
@@ -330,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/MySQL-index-high-duplicated/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Neo">
@@ -347,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">MySQL高重复字段索引查询探究
 
               
             
@@ -373,46 +375,16 @@
                 
               
 
-              <time title="创建时间：2019-03-19 22:32:27" itemprop="dateCreated datePublished" datetime="2019-03-19T22:32:27+08:00">2019-03-19</time>
+              <time title="创建时间：2019-03-31 14:27:34 / 修改时间：16:15:10" itemprop="dateCreated datePublished" datetime="2019-03-31T14:27:34+08:00">2019-03-31</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-21 21:46:31" itemprop="dateModified" datetime="2019-03-21T21:46:31+08:00">2019-03-21</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -426,8 +398,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/19/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/19/hello-world/" itemprop="commentCount"></span>
+                <a href="/2019/03/31/MySQL-index-high-duplicated/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/31/MySQL-index-high-duplicated/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -435,7 +407,7 @@
 
           
           
-            <span id="/2019/03/19/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+            <span id="/2019/03/31/MySQL-index-high-duplicated/" class="leancloud_visitors" data-flag-title="MySQL高重复字段索引查询探究">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -466,8 +438,39 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&apos;Hello World!&apos;)</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+        <p>在学习MySQL时基本都被灌输过这个思想：重复度高的字段不适合做索引，可能会导致查询更慢。<br>当时只是记住了这个结论，没有做深入探究。<br>回头再看下这个问题，有一点疑惑：按理说MySQL的解释器应该没这么傻吧，如果走索引比全表扫描更慢，它不会自己切到全表扫描吗？<br><a id="more"></a><br>于是做了个实验：</p>
+<blockquote>
+<p>MySQL版本：5.0.22-community-nt（家里电脑只有这个版本）<br>查询引擎：InnoDB</p>
+</blockquote>
+<p>建表脚本：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test_user`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> auto_increment,</span><br><span class="line">  <span class="string">`name`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="built_in">character</span> <span class="keyword">set</span> latin1 <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">default</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`age`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">default</span> <span class="string">'0'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>  (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 <span class="keyword">COLLATE</span>=utf8_bin;</span><br></pre></td></tr></table></figure></p>
+<p>在表中插入50W条数据，age分别为3、4、5。<br>唯一变量：给age字段加NORMAL BTREE 索引。<br>查询sql：<code>select * from test_user where age = 3</code></p>
+<blockquote>
+<p>结论：不加索引，sql执行之间<code>0.25s</code>，给<code>age</code>加索引，执行时间变为<code>0.55s</code>左右。用<code>explain</code>查看，确实走了<code>age</code>字段的索引。<br>所以，起码在5.0.22这个版本，重复度高的字段加索引，确实会导致查询变慢！（其他版本没测试）</p>
+</blockquote>
+<h2 id="why？"><a href="#why？" class="headerlink" title="why？"></a>why？</h2><p>其实这个问题的答案不新鲜，网上一搜一大堆。以上边的例子来说，<strong>因为InnoDB的二级索引，以及B+树的索引数据结构类型，走<code>age</code>字段的索引相当于在随机读取这张表，无法有效利用B+树的结构。</strong></p>
+<p>到这里就结束了吗？你以为面试官会如此仁慈吗？<br>了解原理才能更好地领会知识，以上答案至少包含以下知识点：</p>
+<ul>
+<li>聚簇索引/非聚簇索引</li>
+<li>Inno的二级索引结构</li>
+<li>B+树的结构，MySQL为什么要用B+树？</li>
+<li>机械硬盘如何访问数据？（这个不会问太深）</li>
+</ul>
+<p>我们还是以上面的例子来回答下面的问题</p>
+<h4 id="问题一：聚簇索引-非聚簇索引"><a href="#问题一：聚簇索引-非聚簇索引" class="headerlink" title="问题一：聚簇索引/非聚簇索引"></a>问题一：聚簇索引/非聚簇索引</h4><p>在上文的表中，主键id就是聚簇索引，age是非聚簇索引。聚簇索引有一个链式结构，保证索引顺序和数据顺序是相同的。非聚簇索引的顺序和数据顺序无关。对于查询非主键的有索引的字段（比如上文的<code>age</code>），先走age的索引，找到对应主键，再走主键索引找到数据（所谓的二级索引）。<br>所以重复度高的数据带索引查询更慢的答案也有了，本来全表顺序扫描就能做到的事，多走了非聚簇的age索引，把顺序扫描变成了随机访问，导致查询变慢（这里隐藏了一个问题，为什么顺序比随机慢？确切地说在机械硬盘里）。</p>
+<h4 id="问题二：聚簇索引是怎么做到顺序的？"><a href="#问题二：聚簇索引是怎么做到顺序的？" class="headerlink" title="问题二：聚簇索引是怎么做到顺序的？"></a>问题二：聚簇索引是怎么做到顺序的？</h4><p>也很简单，B+树呗！顺序的链式结构就在B+树里。<br><img src="https://upload-images.jianshu.io/upload_images/8573125-31e193838e1f9d5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/890/format/webp" alt="B+树结构"></p>
+<p>如上图：</p>
+<ul>
+<li>叶子节点保存的是顺序的主键索引，以及数据（主键索引对应的数据就挂在叶子节点的索引下面，可以这样理解），叶子节点有一个链表结构，保证可以通过主键顺序访问数据；</li>
+<li>B+树的层高是固定的（3或4层），所有叶子节点在同一深度，非叶子节点只保存了主键索引值和它的子节点的指针；</li>
+<li>很显然，B+树是一个N路平衡查找树。</li>
+</ul>
+<p>（在这里我们不讨论B+树是怎么插入删除的，其实是一个特殊的算法保证了插入和删除后依然保持了这个结构。）<br>在上面的图中，当我们要通过主键索引找到某条数据，很显然只需要3次查询（这里的查询对应的是磁盘IO）就能找到这条数据；而且是稳定的3次（这也是我们为什么选择B+树索引而不是hash索引的原因）。</p>
+<h4 id="问题三：机械硬盘的结构"><a href="#问题三：机械硬盘的结构" class="headerlink" title="问题三：机械硬盘的结构"></a>问题三：机械硬盘的结构</h4><p>直接上图：<br><img src="http://hi.csdn.net/attachment/201106/7/8394323_13074405911zG7.jpg" alt><br>大部分人看到这张图懵了，大哥我们搞软件的还得看机械硬盘的结构吗？<br>咳咳，那换个思路，我们把问题简化，看下机械硬盘的逻辑结构。</p>
+<p>可以简化为：盘面、磁头。数据在盘面上，磁头负责读取。盘面可以转动（7200转，5400转），磁头也可以动。磁头每次可以读取1页数据（4K或8K，跟操作系统有关），即一次磁盘IO。所以要加快机械硬盘的读取速度，可以简单理解为要让盘面转动最小，这就是顺序存储。这也是为什么顺序读取比随机读取快的原因。</p>
+<hr>
+<p>回到最开始的问题，用<code>test_user</code>这张表，结合上面讲的知识，来解释<strong>为什么重复度高的字段，加索引反而查询更慢</strong>。<br>当我们不用<code>age</code>的索引来查询age时，顺序访问数据，磁盘读到的1页数据里就包含了好多个符合条件的数据。<br>当我们用<code>age</code>的索引时，<code>age=3</code>的非聚簇索引下比如有 1 3 5 7 9 等多个主键id，不是按id顺序存储的。假设<code>id=1 || 3</code>存在1页数据里，同时假设非聚簇索引访问主键id的顺序是 1-&gt;5-&gt;3，本来一次磁盘IO就可以拿到1和3，结果<code>id=5</code>横插一杠，多跑一次磁盘IO，得不偿失。</p>
+<p>这就是重复度高的字段，加索引查询更慢的原因。</p>
+
       
     </div>
 
@@ -488,12 +491,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Hello-World/" rel="tag"># Hello World</a>
-          
-        </div>
-      
 
       
       
@@ -503,15 +500,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/03/31/做了一个艰难的决定/" rel="next" title="做了一个艰难的决定">
+                <i class="fa fa-chevron-left"></i> 做了一个艰难的决定
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/21/java-ip/" rel="prev" title="Java获取本机IP探究">
-                Java获取本机IP探究 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -559,8 +556,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -661,6 +667,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#why？"><span class="nav-number">1.</span> <span class="nav-text">why？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题一：聚簇索引-非聚簇索引"><span class="nav-number">1.0.1.</span> <span class="nav-text">问题一：聚簇索引/非聚簇索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题二：聚簇索引是怎么做到顺序的？"><span class="nav-number">1.0.2.</span> <span class="nav-text">问题二：聚簇索引是怎么做到顺序的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题三：机械硬盘的结构"><span class="nav-number">1.0.3.</span> <span class="nav-text">问题三：机械硬盘的结构</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
