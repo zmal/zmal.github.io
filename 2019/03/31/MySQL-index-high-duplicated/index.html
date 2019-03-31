@@ -108,7 +108,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8573125-31e193838e1f9d5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/890/format/webp">
 <meta property="og:image" content="http://hi.csdn.net/attachment/201106/7/8394323_13074405911zG7.jpg">
-<meta property="og:updated_time" content="2019-03-31T08:15:10.241Z">
+<meta property="og:updated_time" content="2019-03-31T12:06:17.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL高重复字段索引查询探究">
 <meta name="twitter:description" content="在学习MySQL时基本都被灌输过这个思想：重复度高的字段不适合做索引，可能会导致查询更慢。当时只是记住了这个结论，没有做深入探究。回头再看下这个问题，有一点疑惑：按理说MySQL的解释器应该没这么傻吧，如果走索引比全表扫描更慢，它不会自己切到全表扫描吗？">
@@ -375,7 +375,7 @@
                 
               
 
-              <time title="创建时间：2019-03-31 14:27:34 / 修改时间：16:15:10" itemprop="dateCreated datePublished" datetime="2019-03-31T14:27:34+08:00">2019-03-31</time>
+              <time title="创建时间：2019-03-31 14:27:34 / 修改时间：20:06:17" itemprop="dateCreated datePublished" datetime="2019-03-31T14:27:34+08:00">2019-03-31</time>
             
 
             
@@ -445,7 +445,7 @@
 <p>建表脚本：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test_user`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> auto_increment,</span><br><span class="line">  <span class="string">`name`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="built_in">character</span> <span class="keyword">set</span> latin1 <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">default</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`age`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">default</span> <span class="string">'0'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>  (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 <span class="keyword">COLLATE</span>=utf8_bin;</span><br></pre></td></tr></table></figure></p>
 <p>在表中插入50W条数据，age分别为3、4、5。<br>唯一变量：给age字段加NORMAL BTREE 索引。<br>查询sql：<code>select * from test_user where age = 3</code></p>
 <blockquote>
-<p>结论：不加索引，sql执行之间<code>0.25s</code>，给<code>age</code>加索引，执行时间变为<code>0.55s</code>左右。用<code>explain</code>查看，确实走了<code>age</code>字段的索引。<br>所以，起码在5.0.22这个版本，重复度高的字段加索引，确实会导致查询变慢！（其他版本没测试）</p>
+<p>结论：不加索引，sql执行时间<code>0.25s</code>，给<code>age</code>加索引，执行时间变为<code>0.55s</code>左右。用<code>explain</code>查看，确实走了<code>age</code>字段的索引。<br>所以，起码在5.0.22这个版本，重复度高的字段加索引，确实会导致查询变慢！（其他版本没测试）</p>
 </blockquote>
 <h2 id="why？"><a href="#why？" class="headerlink" title="why？"></a>why？</h2><p>其实这个问题的答案不新鲜，网上一搜一大堆。以上边的例子来说，<strong>因为InnoDB的二级索引，以及B+树的索引数据结构类型，走<code>age</code>字段的索引相当于在随机读取这张表，无法有效利用B+树的结构。</strong></p>
 <p>到这里就结束了吗？你以为面试官会如此仁慈吗？<br>了解原理才能更好地领会知识，以上答案至少包含以下知识点：</p>
@@ -534,6 +534,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/03/31/10-practices-for-readable-code/" rel="prev" title="本周英文文章分享-10 practices for readable code">
+                本周英文文章分享-10 practices for readable code <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -607,7 +611,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -626,7 +630,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
