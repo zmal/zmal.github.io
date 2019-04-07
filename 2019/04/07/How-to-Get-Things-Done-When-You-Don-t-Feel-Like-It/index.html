@@ -99,27 +99,24 @@
 
 
 
-  <meta name="description" content="在学习MySQL时基本都被灌输过这个思想：重复度高的字段不适合做索引，可能会导致查询更慢。当时只是记住了这个结论，没有做深入探究。回头再看下这个问题，有一点疑惑：按理说MySQL的解释器应该没这么傻吧，如果走索引比全表扫描更慢，它不会自己切到全表扫描吗？">
+  <meta name="description" content="本周的英文文章分享：《How to Get Things Done When You Don’t Feel Like It》当你不喜欢一件事儿的时候，怎么去推进它。不只用于工作，还可以用于学习。毕竟不间断地学习，对大部分人来说都是痛苦的（手动狗头。点击跳转原文 Five strategies for pushing throughKate MatsudairaHave you ever come">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL高重复字段索引查询探究">
-<meta property="og:url" content="https://zmal.xyz/2019/03/31/MySQL-index-high-duplicated/index.html">
+<meta property="og:title" content="How to Get Things Done When You Don&#39;t Feel Like It">
+<meta property="og:url" content="https://zmal.xyz/2019/04/07/How-to-Get-Things-Done-When-You-Don-t-Feel-Like-It/index.html">
 <meta property="og:site_name" content="Neo">
-<meta property="og:description" content="在学习MySQL时基本都被灌输过这个思想：重复度高的字段不适合做索引，可能会导致查询更慢。当时只是记住了这个结论，没有做深入探究。回头再看下这个问题，有一点疑惑：按理说MySQL的解释器应该没这么傻吧，如果走索引比全表扫描更慢，它不会自己切到全表扫描吗？">
+<meta property="og:description" content="本周的英文文章分享：《How to Get Things Done When You Don’t Feel Like It》当你不喜欢一件事儿的时候，怎么去推进它。不只用于工作，还可以用于学习。毕竟不间断地学习，对大部分人来说都是痛苦的（手动狗头。点击跳转原文 Five strategies for pushing throughKate MatsudairaHave you ever come">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8573125-31e193838e1f9d5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/890/format/webp">
-<meta property="og:image" content="http://hi.csdn.net/attachment/201106/7/8394323_13074405911zG7.jpg">
-<meta property="og:updated_time" content="2019-03-31T12:06:17.862Z">
+<meta property="og:updated_time" content="2019-04-07T14:27:27.955Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL高重复字段索引查询探究">
-<meta name="twitter:description" content="在学习MySQL时基本都被灌输过这个思想：重复度高的字段不适合做索引，可能会导致查询更慢。当时只是记住了这个结论，没有做深入探究。回头再看下这个问题，有一点疑惑：按理说MySQL的解释器应该没这么傻吧，如果走索引比全表扫描更慢，它不会自己切到全表扫描吗？">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/8573125-31e193838e1f9d5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/890/format/webp">
+<meta name="twitter:title" content="How to Get Things Done When You Don&#39;t Feel Like It">
+<meta name="twitter:description" content="本周的英文文章分享：《How to Get Things Done When You Don’t Feel Like It》当你不喜欢一件事儿的时候，怎么去推进它。不只用于工作，还可以用于学习。毕竟不间断地学习，对大部分人来说都是痛苦的（手动狗头。点击跳转原文 Five strategies for pushing throughKate MatsudairaHave you ever come">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zmal.xyz/2019/03/31/MySQL-index-high-duplicated/">
+  <link rel="canonical" href="https://zmal.xyz/2019/04/07/How-to-Get-Things-Done-When-You-Don-t-Feel-Like-It/">
 
 
 
@@ -129,7 +126,7 @@
   };
 </script>
 
-  <title>MySQL高重复字段索引查询探究 | Neo</title>
+  <title>How to Get Things Done When You Don't Feel Like It | Neo</title>
   
 
 
@@ -332,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zmal.xyz/2019/03/31/MySQL-index-high-duplicated/">
+    <link itemprop="mainEntityOfPage" href="https://zmal.xyz/2019/04/07/How-to-Get-Things-Done-When-You-Don-t-Feel-Like-It/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Neo">
@@ -349,7 +346,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL高重复字段索引查询探究
+          <h1 class="post-title" itemprop="name headline">How to Get Things Done When You Don't Feel Like It
 
               
             
@@ -375,7 +372,7 @@
                 
               
 
-              <time title="创建时间：2019-03-31 14:27:34 / 修改时间：20:06:17" itemprop="dateCreated datePublished" datetime="2019-03-31T14:27:34+08:00">2019-03-31</time>
+              <time title="创建时间：2019-04-07 22:22:56 / 修改时间：22:27:27" itemprop="dateCreated datePublished" datetime="2019-04-07T22:22:56+08:00">2019-04-07</time>
             
 
             
@@ -398,8 +395,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/31/MySQL-index-high-duplicated/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/31/MySQL-index-high-duplicated/" itemprop="commentCount"></span>
+                <a href="/2019/04/07/How-to-Get-Things-Done-When-You-Don-t-Feel-Like-It/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/07/How-to-Get-Things-Done-When-You-Don-t-Feel-Like-It/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,7 +404,7 @@
 
           
           
-            <span id="/2019/03/31/MySQL-index-high-duplicated/" class="leancloud_visitors" data-flag-title="MySQL高重复字段索引查询探究">
+            <span id="/2019/04/07/How-to-Get-Things-Done-When-You-Don-t-Feel-Like-It/" class="leancloud_visitors" data-flag-title="How to Get Things Done When You Don't Feel Like It">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -438,38 +435,49 @@
       
 
       
-        <p>在学习MySQL时基本都被灌输过这个思想：重复度高的字段不适合做索引，可能会导致查询更慢。<br>当时只是记住了这个结论，没有做深入探究。<br>回头再看下这个问题，有一点疑惑：按理说MySQL的解释器应该没这么傻吧，如果走索引比全表扫描更慢，它不会自己切到全表扫描吗？<br><a id="more"></a><br>于是做了个实验：</p>
-<blockquote>
-<p>MySQL版本：5.0.22-community-nt（家里电脑只有这个版本）<br>查询引擎：InnoDB</p>
-</blockquote>
-<p>建表脚本：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test_user`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> auto_increment,</span><br><span class="line">  <span class="string">`name`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="built_in">character</span> <span class="keyword">set</span> latin1 <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">default</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`age`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">default</span> <span class="string">'0'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>  (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 <span class="keyword">COLLATE</span>=utf8_bin;</span><br></pre></td></tr></table></figure></p>
-<p>在表中插入50W条数据，age分别为3、4、5。<br>唯一变量：给age字段加NORMAL BTREE 索引。<br>查询sql：<code>select * from test_user where age = 3</code></p>
-<blockquote>
-<p>结论：不加索引，sql执行时间<code>0.25s</code>，给<code>age</code>加索引，执行时间变为<code>0.55s</code>左右。用<code>explain</code>查看，确实走了<code>age</code>字段的索引。<br>所以，起码在5.0.22这个版本，重复度高的字段加索引，确实会导致查询变慢！（其他版本没测试）</p>
-</blockquote>
-<h2 id="why？"><a href="#why？" class="headerlink" title="why？"></a>why？</h2><p>其实这个问题的答案不新鲜，网上一搜一大堆。以上边的例子来说，<strong>因为InnoDB的二级索引，以及B+树的索引数据结构类型，走<code>age</code>字段的索引相当于在随机读取这张表，无法有效利用B+树的结构。</strong></p>
-<p>到这里就结束了吗？你以为面试官会如此仁慈吗？<br>了解原理才能更好地领会知识，以上答案至少包含以下知识点：</p>
-<ul>
-<li>聚簇索引/非聚簇索引</li>
-<li>Inno的二级索引结构</li>
-<li>B+树的结构，MySQL为什么要用B+树？</li>
-<li>机械硬盘如何访问数据？（这个不会问太深）</li>
-</ul>
-<p>我们还是以上面的例子来回答下面的问题</p>
-<h4 id="问题一：聚簇索引-非聚簇索引"><a href="#问题一：聚簇索引-非聚簇索引" class="headerlink" title="问题一：聚簇索引/非聚簇索引"></a>问题一：聚簇索引/非聚簇索引</h4><p>在上文的表中，主键id就是聚簇索引，age是非聚簇索引。聚簇索引有一个链式结构，保证索引顺序和数据顺序是相同的。非聚簇索引的顺序和数据顺序无关。对于查询非主键的有索引的字段（比如上文的<code>age</code>），先走age的索引，找到对应主键，再走主键索引找到数据（所谓的二级索引）。<br>所以重复度高的数据带索引查询更慢的答案也有了，本来全表顺序扫描就能做到的事，多走了非聚簇的age索引，把顺序扫描变成了随机访问，导致查询变慢（这里隐藏了一个问题，为什么顺序比随机慢？确切地说在机械硬盘里）。</p>
-<h4 id="问题二：聚簇索引是怎么做到顺序的？"><a href="#问题二：聚簇索引是怎么做到顺序的？" class="headerlink" title="问题二：聚簇索引是怎么做到顺序的？"></a>问题二：聚簇索引是怎么做到顺序的？</h4><p>也很简单，B+树呗！顺序的链式结构就在B+树里。<br><img src="https://upload-images.jianshu.io/upload_images/8573125-31e193838e1f9d5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/890/format/webp" alt="B+树结构"></p>
-<p>如上图：</p>
-<ul>
-<li>叶子节点保存的是顺序的主键索引，以及数据（主键索引对应的数据就挂在叶子节点的索引下面，可以这样理解），叶子节点有一个链表结构，保证可以通过主键顺序访问数据；</li>
-<li>B+树的层高是固定的（3或4层），所有叶子节点在同一深度，非叶子节点只保存了主键索引值和它的子节点的指针；</li>
-<li>很显然，B+树是一个N路平衡查找树。</li>
-</ul>
-<p>（在这里我们不讨论B+树是怎么插入删除的，其实是一个特殊的算法保证了插入和删除后依然保持了这个结构。）<br>在上面的图中，当我们要通过主键索引找到某条数据，很显然只需要3次查询（这里的查询对应的是磁盘IO）就能找到这条数据；而且是稳定的3次（这也是我们为什么选择B+树索引而不是hash索引的原因）。</p>
-<h4 id="问题三：机械硬盘的结构"><a href="#问题三：机械硬盘的结构" class="headerlink" title="问题三：机械硬盘的结构"></a>问题三：机械硬盘的结构</h4><p>直接上图：<br><img src="http://hi.csdn.net/attachment/201106/7/8394323_13074405911zG7.jpg" alt><br>大部分人看到这张图懵了，大哥我们搞软件的还得看机械硬盘的结构吗？<br>咳咳，那换个思路，我们把问题简化，看下机械硬盘的逻辑结构。</p>
-<p>可以简化为：盘面、磁头。数据在盘面上，磁头负责读取。盘面可以转动（7200转，5400转），磁头也可以动。磁头每次可以读取1页数据（4K或8K，跟操作系统有关），即一次磁盘IO。所以要加快机械硬盘的读取速度，可以简单理解为要让盘面转动最小，这就是顺序存储。这也是为什么顺序读取比随机读取快的原因。</p>
-<hr>
-<p>回到最开始的问题，用<code>test_user</code>这张表，结合上面讲的知识，来解释<strong>为什么重复度高的字段，加索引反而查询更慢</strong>。<br>当我们不用<code>age</code>的索引来查询age时，顺序访问数据，磁盘读到的1页数据里就包含了好多个符合条件的数据。<br>当我们用<code>age</code>的索引时，<code>age=3</code>的非聚簇索引下比如有 1 3 5 7 9 等多个主键id，不是按id顺序存储的。假设<code>id=1 || 3</code>存在1页数据里，同时假设非聚簇索引访问主键id的顺序是 1-&gt;5-&gt;3，本来一次磁盘IO就可以拿到1和3，结果<code>id=5</code>横插一杠，多跑一次磁盘IO，得不偿失。</p>
-<p>这就是重复度高的字段，加索引查询更慢的原因。</p>
+        <p>本周的英文文章分享：《How to Get Things Done When You Don’t Feel Like It》<br>当你不喜欢一件事儿的时候，怎么去推进它。不只用于工作，还可以用于学习。毕竟不间断地学习，对大部分人来说都是痛苦的（手动狗头。<br><a href="https://queue.acm.org/detail.cfm?id=3280677&amp;utm_source=wanqu.co&amp;utm_campaign=Wanqu+Daily&amp;utm_medium=website" target="_blank" rel="noopener">点击跳转原文</a></p>
+<h4 id="Five-strategies-for-pushing-through"><a href="#Five-strategies-for-pushing-through" class="headerlink" title="Five strategies for pushing through"></a>Five strategies for pushing through</h4><h6 id="Kate-Matsudaira"><a href="#Kate-Matsudaira" class="headerlink" title="Kate Matsudaira"></a>Kate Matsudaira</h6><p>Have you ever come into work, sat down at your computer to begin a project, opened your editor, and then just stared at the screen? This happens to me all the time, so I understand your struggle.</p>
+<p>Even if you love your job, you don’t always feel like doing it every day. There are so many factors that influence your ability to show up to work with enthusiasm and then work hard all day long.</p>
+<p>External events can take priority in your mind—family struggles, a breakup, a sick pet—and make it hard to focus. Then, of course, there are the struggles at work that can make it hard to feel motivated. Getting a bad review can knock you off course. Likewise, if you work really hard on a project and your manager doesn’t seem to value it at all, you might wonder why you are working so hard.</p>
+<p>Other times you have to work on tasks you don’t enjoy (for me that is writing lots of tests, or documentation) or projects that aren’t challenging. If your work is uninteresting or if a task you’ve been assigned seems beneath your ability, finding your motivation can be hard.</p>
+<p>So, what do you do? Many people turn to procrastination or ignoring the task—but that only postpones the inevitable. You can try to talk your way out of the assignment, and maybe your manager will support you, but at some point the work needs to get done.</p>
+<p>If you want to be successful, then it serves you better to rise to the occasion no matter what. That means learning how to push through challenges and deliver valuable results.</p>
+<p>Since this happens to me quite often, I have captured five of my best strategies for turning out amazing work even when I don’t feel like it.</p>
+<h5 id="Gamify-your-process"><a href="#Gamify-your-process" class="headerlink" title="Gamify your process"></a>Gamify your process</h5><p>Dealing with a really big project used to hold me back. If the project had lots of tasks I didn’t know how to do or that seemed really difficult, I resisted even starting because I was so overwhelmed by the scope.</p>
+<p>Of course, this meant I procrastinated until only the minimum amount of time remained to complete the project. Then I would end up working crazy long hours, and sometimes I ended up with code that “worked” but was in no way ready for prime time (e.g., a few bugs, not enough coverage of edge cases, minimal testing, working only in my dev environment because I couldn’t make it work on staging, etc.). This was super stressful and usually meant my work wasn’t as good as it could have been if I had only started earlier.</p>
+<p>This was one of the biggest obstacles early in my career: I had a hard time getting started.</p>
+<p>I discovered that if I made the process of getting started easier, those first few steps on a daunting project became more tenable. Once I took a few steps, it was so much easier to keep going.</p>
+<p>My solution was to approach a project by turning it into as many tiny steps as possible. That way I could get a few really easy wins under my belt. For example, each step would be a task such as “Search for <strong>__</strong> on Google” or “Have a conversation with <strong>__</strong>.” Crossing things off your to-do list gives your brain a happy little dopamine hit, even if the tasks are tiny—it keeps your motivation up and your excuses down.</p>
+<p>Try breaking your next project into the smallest increments you possibly can. Each step should be really small (I try for tasks that take 15 minutes or less) and really easy to accomplish, so that you can get a win!</p>
+<p>You have to overcome inertia. Little wins add up and make it easier to do that.</p>
+<h5 id="Reserve-calendar-time-for-every-project"><a href="#Reserve-calendar-time-for-every-project" class="headerlink" title="Reserve calendar time for every project"></a>Reserve calendar time for every project</h5><p>Set aside time on your calendar specifically for working on a task you’re having trouble starting. Treat it as seriously as you would any other appointment. You must show up and you must work on that project.</p>
+<p>Reserve an amount of time that is realistic for making progress—at least 30 minutes to an hour. This strategy is key for busy people or managers. If you don’t schedule the time to do meaningful strategic work, your time will fill up with tactical tasks.</p>
+<p>And what if you don’t feel like working on the task at the appointed time? Set a timer when you’re starting work. Set it for 10 minutes and tell yourself you have to work only until the timer goes off.</p>
+<p>Start working on the list of tiny steps you have created for yourself: google something; set up your project; send one email; review one document.</p>
+<p>Almost always, taking one or two of these tiny steps will get your brain working, and it will be easier to keep going. You’ll do one task, cross it off the list, and then do another. Your timer for 10 minutes will go off, and you’ll just keep going because now you’re engaged with the project.</p>
+<p>If you’re really not engaged with it after 10 minutes (though this rarely happens to me), then let yourself take a break. But block off another chunk of time on your calendar to come back to it soon.</p>
+<h5 id="Get-other-people-involved"><a href="#Get-other-people-involved" class="headerlink" title="Get other people involved"></a>Get other people involved</h5><p>Sometimes the best way to get yourself to do something is to make yourself accountable to another person.</p>
+<p>According to a study by the American Society of Training and Development,1 people who commit to someone else have a 65 percent chance of accomplishing the goals they set. That number goes up to 95 percent if you commit to a specific accountability appointment with that person.</p>
+<p>Our brains are wired not to want to let down other people. If someone invests in you by agreeing to help you accomplish your goal, you are driven to do your part by a desire to live up to that commitment.</p>
+<p>There are a few ways to do this:</p>
+<p>• Set deadlines with your manager for when certain aspects of the project will be complete, and schedule regular check-ins on status.</p>
+<p>• Ask for help on a part of the project. With the help of another person to reduce your workload, you can get other parts of the project done. Set a time to meet with your helper to combine your results.</p>
+<p>• Make a recurring date with a peer to work together. For example, if you are both tasked with running a series of tedious tests that you both would rather put off, set a time to sit together and get them done.</p>
+<p>• Embrace the scrum part of Agile and have daily standups with your teammates.</p>
+<p>Delegating work can be especially helpful when you have a really big project in front of you. Sometimes the scope of a project is so overwhelming that it is hard to get started; if you can solicit help from your team to tackle some of the project, then you can focus your efforts on a more manageable workload.</p>
+<h5 id="Talk-about-it"><a href="#Talk-about-it" class="headerlink" title="Talk about it"></a>Talk about it</h5><p>Externalizing problems can make them a lot easier to deal with. Things tend to get blown out of proportion in our minds, especially when we are stressed about them.</p>
+<p>I can’t tell you how many times I’ve started talking to someone about how stressed I am about a project—like I don’t have any ideas for an article, or it’s so hard I have no clue how I will solve it—that by the time I’m done talking, I actually come away full of inspiration. Other times, I am just so stressed about what could go wrong (or what is going wrong) that I fast become overwhelmed.</p>
+<p>Scientific studies have shown that talking about feelings out loud actually decreases stress and the bad feelings we’re experiencing. Brain imaging done at UCLA2 demonstrated that when a person was shown a picture of an angry face, the amygdala became more active. This is the part of the brain responsible for activating the body’s “alarm” system—it lets you know that you have something to fear and kicks your body into action to deal with that threat.</p>
+<p>When the study participants were able to name what they saw, however, the simple act of putting the feeling they saw into words caused the amygdala activity to decrease. Not only that, but each participant’s right ventrolateral prefrontal cortex then became activated. Other studies have indicated that this is the area of the brain associated with processing emotion and putting words to emotional experiences.</p>
+<p>So, talking about your big project might be just the thing to help you get started.</p>
+<p>Plus, if you talk to smart friends or mentors, they might have suggestions for how you can start or experiences to share about how they did something similar. You can become more relaxed and smarter at the same time.</p>
+<h5 id="Practice-the-art-of-“precrastination”"><a href="#Practice-the-art-of-“precrastination”" class="headerlink" title="Practice the art of “precrastination”"></a>Practice the art of “precrastination”</h5><p>Do you ever have trouble working from home because you get distracted by unwashed dishes in the sink or laundry that needs to be folded? You have probably been told that you are a procrastinator, but, in fact, you might be just the opposite.</p>
+<p>I used to be a master procrastinator. I would find any excuse to keep from starting work, or even thinking about it. As I learned again and again, procrastination is a bad thing. It comes from a fear of getting started, so you actively keep yourself from making progress by doing things that keep your mind off of what you have to do.</p>
+<p>But there is something called “precrastination,” and it is actually really good for you.</p>
+<p>As you’re working on a project, your brain needs to take breaks—not just to recharge, but also to form new connections and create new ideas. That’s why getting up to wash the dishes, fold the laundry, take a shower, take a walk, or any other low-key activity that allows you to let your mind wander for a while can be really good for your productivity overall.</p>
+<p>When you do something that feels satisfying, your brain releases dopamine (just as it does when you cross an item off a to-do list—because it feels good!). So, when you take a walk midway through your work session, your brain gets a hit of dopamine.</p>
+<p>That dopamine triggers the parts of your brain associated with creativity and gets them working. That’s when those magical aha! moments happen, because your brain is sending energy to the areas that help you make connections and see things in new ways.</p>
+<p>Next time you are stuck on a project you don’t want to start, try doing something that you know will be satisfying. You just might have a bright idea while you’re rinsing off your dishes, and that will make you excited to run over to your computer and get to work.</p>
 
       
     </div>
@@ -504,7 +512,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://zmal.xyz/2019/03/31/MySQL-index-high-duplicated/" title="MySQL高重复字段索引查询探究">https://zmal.xyz/2019/03/31/MySQL-index-high-duplicated/</a>
+    <a href="https://zmal.xyz/2019/04/07/How-to-Get-Things-Done-When-You-Don-t-Feel-Like-It/" title="How to Get Things Done When You Don't Feel Like It">https://zmal.xyz/2019/04/07/How-to-Get-Things-Done-When-You-Don-t-Feel-Like-It/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -524,8 +532,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/31/做了一个艰难的决定/" rel="next" title="做了一个艰难的决定">
-                <i class="fa fa-chevron-left"></i> 做了一个艰难的决定
+              <a href="/2019/04/07/lengthOfLongestSubstring/" rel="next" title="leetcode3-lengthOfLongestSubstring">
+                <i class="fa fa-chevron-left"></i> leetcode3-lengthOfLongestSubstring
               </a>
             
           </div>
@@ -533,10 +541,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/31/10-practices-for-readable-code/" rel="prev" title="本周英文文章分享——《10 practices for readable code》">
-                本周英文文章分享——《10 practices for readable code》 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -722,7 +726,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#why？"><span class="nav-number">1.</span> <span class="nav-text">why？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题一：聚簇索引-非聚簇索引"><span class="nav-number">1.0.1.</span> <span class="nav-text">问题一：聚簇索引/非聚簇索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题二：聚簇索引是怎么做到顺序的？"><span class="nav-number">1.0.2.</span> <span class="nav-text">问题二：聚簇索引是怎么做到顺序的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题三：机械硬盘的结构"><span class="nav-number">1.0.3.</span> <span class="nav-text">问题三：机械硬盘的结构</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Five-strategies-for-pushing-through"><span class="nav-number">1.</span> <span class="nav-text">Five strategies for pushing through</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Kate-Matsudaira"><span class="nav-number">1.0.1.</span> <span class="nav-text">Kate Matsudaira</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Gamify-your-process"><span class="nav-number">1.1.</span> <span class="nav-text">Gamify your process</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Reserve-calendar-time-for-every-project"><span class="nav-number">1.2.</span> <span class="nav-text">Reserve calendar time for every project</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Get-other-people-involved"><span class="nav-number">1.3.</span> <span class="nav-text">Get other people involved</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Talk-about-it"><span class="nav-number">1.4.</span> <span class="nav-text">Talk about it</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Practice-the-art-of-“precrastination”"><span class="nav-number">1.5.</span> <span class="nav-text">Practice the art of “precrastination”</span></a></li></ol></div>
             
 
           </div>
