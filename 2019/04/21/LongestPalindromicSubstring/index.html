@@ -99,25 +99,25 @@
 
 
 
-  <meta name="description" content="You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return">
-<meta name="keywords" content="-leetcode">
+  <meta name="description" content="Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1:  Input: “babad”Output: “bab”Note: “aba” is also a valid answer.  Example">
+<meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-2 Add Two Numbers">
-<meta property="og:url" content="https://zmal.xyz/2019/03/29/leetcode-2/index.html">
+<meta property="og:title" content="LongestPalindromicSubstring">
+<meta property="og:url" content="https://zmal.xyz/2019/04/21/LongestPalindromicSubstring/index.html">
 <meta property="og:site_name" content="Neo">
-<meta property="og:description" content="You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return">
+<meta property="og:description" content="Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1:  Input: “babad”Output: “bab”Note: “aba” is also a valid answer.  Example">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-29T15:12:10.975Z">
+<meta property="og:updated_time" content="2019-04-21T13:40:03.637Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-2 Add Two Numbers">
-<meta name="twitter:description" content="You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return">
+<meta name="twitter:title" content="LongestPalindromicSubstring">
+<meta name="twitter:description" content="Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1:  Input: “babad”Output: “bab”Note: “aba” is also a valid answer.  Example">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zmal.xyz/2019/03/29/leetcode-2/">
+  <link rel="canonical" href="https://zmal.xyz/2019/04/21/LongestPalindromicSubstring/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>leetcode-2 Add Two Numbers | Neo</title>
+  <title>LongestPalindromicSubstring | Neo</title>
   
 
 
@@ -330,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zmal.xyz/2019/03/29/leetcode-2/">
+    <link itemprop="mainEntityOfPage" href="https://zmal.xyz/2019/04/21/LongestPalindromicSubstring/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Neo">
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetcode-2 Add Two Numbers
+          <h1 class="post-title" itemprop="name headline">LongestPalindromicSubstring
 
               
             
@@ -373,7 +373,7 @@
                 
               
 
-              <time title="创建时间：2019-03-29 22:16:28 / 修改时间：23:12:10" itemprop="dateCreated datePublished" datetime="2019-03-29T22:16:28+08:00">2019-03-29</time>
+              <time title="创建时间：2019-04-21 21:35:32 / 修改时间：21:40:03" itemprop="dateCreated datePublished" datetime="2019-04-21T21:35:32+08:00">2019-04-21</time>
             
 
             
@@ -414,8 +414,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/29/leetcode-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/29/leetcode-2/" itemprop="commentCount"></span>
+                <a href="/2019/04/21/LongestPalindromicSubstring/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/21/LongestPalindromicSubstring/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -423,7 +423,7 @@
 
           
           
-            <span id="/2019/03/29/leetcode-2/" class="leancloud_visitors" data-flag-title="leetcode-2 Add Two Numbers">
+            <span id="/2019/04/21/LongestPalindromicSubstring/" class="leancloud_visitors" data-flag-title="LongestPalindromicSubstring">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -454,23 +454,19 @@
       
 
       
-        <blockquote>
-<p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.<br>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-</blockquote>
-<p>Example:</p>
+        <p>Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.</p>
+<p>Example 1:</p>
 <blockquote>
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8<br>Explanation: 342 + 465 = 807.</p>
+<p>Input: “babad”<br>Output: “bab”<br>Note: “aba” is also a valid answer.</p>
 </blockquote>
-<p>两个非空链表，代表两个非负整数；每个节点都是一个数字，倒序，比如2-&gt;4-&gt;3代表342。链表求和，算出正确的结果，也是倒序链表输出。</p>
-<a id="more"></a>
+<p>Example 2:</p>
+<blockquote>
+<p>Input: “cbbd”<br>Output: “bb”<br><a id="more"></a><br>求字符串中的最长回文。</p>
+</blockquote>
 <hr>
-<p>注意点：</p>
-<ul>
-<li>不是简单的链表每一位相加，是输出两个链表分别代表的数字的和。</li>
-<li>注意进位。</li>
-<li>考虑两个链表不一样长以及最高位进位的情况。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line"></span><br><span class="line">    ListNode(<span class="keyword">int</span> x) &#123;</span><br><span class="line">        val = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 解法一 链表遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        ListNode prefix = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">        ListNode cur = prefix;</span><br><span class="line">        <span class="keyword">int</span> nextAdd = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="keyword">null</span> || l2 != <span class="keyword">null</span> || nextAdd != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> val1 = l1 == <span class="keyword">null</span> ? <span class="number">0</span> : l1.val;</span><br><span class="line">            <span class="keyword">int</span> val2 = l2 == <span class="keyword">null</span> ? <span class="number">0</span> : l2.val;</span><br><span class="line">            <span class="keyword">int</span> val = val1 + val2 + nextAdd;</span><br><span class="line">            nextAdd = val &gt;= <span class="number">10</span> ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">            cur.next = <span class="keyword">new</span> ListNode(val &gt;= <span class="number">10</span> ? val - <span class="number">10</span> : val);</span><br><span class="line">            <span class="keyword">if</span>(l1 != <span class="keyword">null</span>) &#123;</span><br><span class="line">                l1 = l1.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(l2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">                l2 = l2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prefix.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 解法二 尝试了转int相加再转链表的方式，会遇到int最大值的问题。所以这个思路是走不通滴，也是反直觉的。</span></span><br><span class="line">    <span class="comment">// 所以这是个错误解法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">addTwoNumbers2</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">double</span> num1 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; l1 != <span class="keyword">null</span>; i++) &#123;</span><br><span class="line">        num1 += l1.val * Math.pow(<span class="number">10</span>, i);</span><br><span class="line">        l1 = l1.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">double</span> num2 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; l2 != <span class="keyword">null</span>; i++) &#123;</span><br><span class="line">        num2 += l2.val * Math.pow(<span class="number">10</span>, i);</span><br><span class="line">        l2 = l2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">char</span>[] num3 = String.valueOf((<span class="keyword">int</span>) (num1 + num2)).toCharArray();</span><br><span class="line">    ListNode rtn = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">    ListNode crr = rtn;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = (num3.length - <span class="number">1</span>); i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        crr.next = <span class="keyword">new</span> ListNode(num3[i] - <span class="string">'0'</span>);</span><br><span class="line">        crr = crr.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> rtn.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = str.length();</span><br><span class="line">        <span class="keyword">if</span> (length &lt;= <span class="number">1</span>) <span class="keyword">return</span> str;</span><br><span class="line">        <span class="keyword">int</span>[] rtn = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> m = str.charAt(i);</span><br><span class="line">            <span class="comment">// todo 两种情况(奇偶)</span></span><br><span class="line">            <span class="keyword">if</span> ((i + <span class="number">1</span>) &lt; length &amp;&amp; str.charAt(i + <span class="number">1</span>) == m) &#123;</span><br><span class="line">                <span class="keyword">int</span> j = i + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">int</span> k = i;</span><br><span class="line">                <span class="keyword">while</span> (k - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; j + <span class="number">1</span> &lt; length &amp;&amp; str.charAt(k - <span class="number">1</span>) == str.charAt(j + <span class="number">1</span>)) &#123;</span><br><span class="line">                    j++;</span><br><span class="line">                    k--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> ((j - k) &gt; (rtn[<span class="number">1</span>] - rtn[<span class="number">0</span>])) &#123;</span><br><span class="line">                    rtn[<span class="number">0</span>] = k;</span><br><span class="line">                    rtn[<span class="number">1</span>] = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> j = i, k = i;</span><br><span class="line">            <span class="keyword">while</span> ((k - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; j + <span class="number">1</span> &lt; length) &amp;&amp; str.charAt(k - <span class="number">1</span>) == str.charAt(j + <span class="number">1</span>)) &#123;</span><br><span class="line">                j++;</span><br><span class="line">                k--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> ((j - k) &gt; (rtn[<span class="number">1</span>] - rtn[<span class="number">0</span>])) &#123;</span><br><span class="line">                rtn[<span class="number">0</span>] = k;</span><br><span class="line">                rtn[<span class="number">1</span>] = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str.substring(rtn[<span class="number">0</span>], rtn[<span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>上述是最常规的解法。这道题有5种解法，时间复杂度最低是<code>O(n)</code>,用到了马拉车算法。<br><a href="http://www.cnblogs.com/grandyang/p/4475985.html" target="_blank" rel="noopener">马拉车</a></p>
+
       
     </div>
 
@@ -504,7 +500,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://zmal.xyz/2019/03/29/leetcode-2/" title="leetcode-2 Add Two Numbers">https://zmal.xyz/2019/03/29/leetcode-2/</a>
+    <a href="https://zmal.xyz/2019/04/21/LongestPalindromicSubstring/" title="LongestPalindromicSubstring">https://zmal.xyz/2019/04/21/LongestPalindromicSubstring/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -517,7 +513,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/leetcode/" rel="tag"># -leetcode</a>
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
           
         </div>
       
@@ -530,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/24/google-abtest/" rel="next" title="英文文章分享——Overlapping Experiment Infrastructure:More, Better, Faster Experimentation">
-                <i class="fa fa-chevron-left"></i> 英文文章分享——Overlapping Experiment Infrastructure:More, Better, Faster Experimentation
+              <a href="/2019/04/15/MedianOfTwoSortedArrays/" rel="next" title="Median Of Two Sorted Arrays">
+                <i class="fa fa-chevron-left"></i> Median Of Two Sorted Arrays
               </a>
             
           </div>
@@ -540,8 +536,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/31/做了一个艰难的决定/" rel="prev" title="做了一个艰难的决定">
-                做了一个艰难的决定 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/21/java8-map-api/" rel="prev" title="Java HashMap 新增方法（merge,compute）">
+                Java HashMap 新增方法（merge,compute） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
