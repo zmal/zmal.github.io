@@ -99,17 +99,17 @@
 
 
 
-  <meta name="description" content="Java8 Map里新增了几个方法，很多同学不知道具体功能。先从最简单的开始。  putIfAbsent()12HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;String, String&amp;gt;();map.putIfAbsent(&quot;k&quot;, &quot;v&quot;); 等价于：（功能等价，效率并不等价）1234HashMap&amp;lt;String, Strin">
+  <meta name="description" content="Java8 Map里新增了几个方法，很多同学不知道具体功能。先从最简单的开始。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java HashMap 新增方法（merge,compute）">
 <meta property="og:url" content="https://zmal.xyz/2019/04/21/java8-map-api/index.html">
 <meta property="og:site_name" content="Neo">
-<meta property="og:description" content="Java8 Map里新增了几个方法，很多同学不知道具体功能。先从最简单的开始。  putIfAbsent()12HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;String, String&amp;gt;();map.putIfAbsent(&quot;k&quot;, &quot;v&quot;); 等价于：（功能等价，效率并不等价）1234HashMap&amp;lt;String, Strin">
+<meta property="og:description" content="Java8 Map里新增了几个方法，很多同学不知道具体功能。先从最简单的开始。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-21T13:56:27.949Z">
+<meta property="og:updated_time" content="2019-04-21T14:41:50.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java HashMap 新增方法（merge,compute）">
-<meta name="twitter:description" content="Java8 Map里新增了几个方法，很多同学不知道具体功能。先从最简单的开始。  putIfAbsent()12HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;String, String&amp;gt;();map.putIfAbsent(&quot;k&quot;, &quot;v&quot;); 等价于：（功能等价，效率并不等价）1234HashMap&amp;lt;String, Strin">
+<meta name="twitter:description" content="Java8 Map里新增了几个方法，很多同学不知道具体功能。先从最简单的开始。">
 
 
 
@@ -372,7 +372,7 @@
                 
               
 
-              <time title="创建时间：2019-04-21 21:41:38 / 修改时间：21:56:27" itemprop="dateCreated datePublished" datetime="2019-04-21T21:41:38+08:00">2019-04-21</time>
+              <time title="创建时间：2019-04-21 21:41:38 / 修改时间：22:41:50" itemprop="dateCreated datePublished" datetime="2019-04-21T21:41:38+08:00">2019-04-21</time>
             
 
             
@@ -435,7 +435,7 @@
       
 
       
-        <p>Java8 Map里新增了几个方法，很多同学不知道具体功能。<br>先从最简单的开始。</p>
+        <p>Java8 Map里新增了几个方法，很多同学不知道具体功能。<br>先从最简单的开始。<br><a id="more"></a></p>
 <hr>
 <h2 id="putIfAbsent"><a href="#putIfAbsent" class="headerlink" title="putIfAbsent()"></a>putIfAbsent()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">map.putIfAbsent(<span class="string">"k"</span>, <span class="string">"v"</span>);</span><br></pre></td></tr></table></figure>
 <p>等价于：（功能等价，效率并不等价）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line"><span class="keyword">if</span>(!map.containsKey(<span class="string">"k"</span>)) &#123;</span><br><span class="line">    map.put(<span class="string">"k"</span>, <span class="string">"v"</span>);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
