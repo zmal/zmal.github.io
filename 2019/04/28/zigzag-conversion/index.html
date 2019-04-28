@@ -99,24 +99,28 @@
 
 
 
-  <meta name="description" content="要做一件事A，就得先做B，但要做B就得先做C，要做C得先做D，最后发现做了一堆与一开始要做的A毫不相干的事。要及时止损啊。 何为 yak shaving？要去买个水管，得开车出去；但路上要交过桥费；为了避免交过桥费，得去跟邻居借张通行卡；但邻居是不会把卡借给我的，因为前些时候跟他家借的枕头还没还给他；但枕头里的棉絮掉了不少，你得找些替代品填充回去，才敢还给人家；哪里找填充物？去动物园撸 yak （">
+  <meta name="description" content="这道题乍一看没看懂。查了一下才明白，zigzag指的是之 or 反N字型。把竖和提看作一个结构，如下图的红色部分。 这个结构可以看作由若干个上图的红色部分构成。红色部分又可以分为竖和提。竖的部分即字符串下标index(0~nRows)遍历，提的部分即index(nRows-2~0),提的部分不包含第一行和最后一行。12345678910111213141516171819202122232425">
+<meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Don&#39;t Shave That Yak">
-<meta property="og:url" content="https://zmal.xyz/2019/04/21/Yak/index.html">
+<meta property="og:title" content="zigzag-conversion">
+<meta property="og:url" content="https://zmal.xyz/2019/04/28/zigzag-conversion/index.html">
 <meta property="og:site_name" content="Neo">
-<meta property="og:description" content="要做一件事A，就得先做B，但要做B就得先做C，要做C得先做D，最后发现做了一堆与一开始要做的A毫不相干的事。要及时止损啊。 何为 yak shaving？要去买个水管，得开车出去；但路上要交过桥费；为了避免交过桥费，得去跟邻居借张通行卡；但邻居是不会把卡借给我的，因为前些时候跟他家借的枕头还没还给他；但枕头里的棉絮掉了不少，你得找些替代品填充回去，才敢还给人家；哪里找填充物？去动物园撸 yak （">
+<meta property="og:description" content="这道题乍一看没看懂。查了一下才明白，zigzag指的是之 or 反N字型。把竖和提看作一个结构，如下图的红色部分。 这个结构可以看作由若干个上图的红色部分构成。红色部分又可以分为竖和提。竖的部分即字符串下标index(0~nRows)遍历，提的部分即index(nRows-2~0),提的部分不包含第一行和最后一行。12345678910111213141516171819202122232425">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-21T14:51:47.367Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8573125-6c7ee7159f56f599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8573125-b3b780f8722d6b1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-28T15:10:12.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Don&#39;t Shave That Yak">
-<meta name="twitter:description" content="要做一件事A，就得先做B，但要做B就得先做C，要做C得先做D，最后发现做了一堆与一开始要做的A毫不相干的事。要及时止损啊。 何为 yak shaving？要去买个水管，得开车出去；但路上要交过桥费；为了避免交过桥费，得去跟邻居借张通行卡；但邻居是不会把卡借给我的，因为前些时候跟他家借的枕头还没还给他；但枕头里的棉絮掉了不少，你得找些替代品填充回去，才敢还给人家；哪里找填充物？去动物园撸 yak （">
+<meta name="twitter:title" content="zigzag-conversion">
+<meta name="twitter:description" content="这道题乍一看没看懂。查了一下才明白，zigzag指的是之 or 反N字型。把竖和提看作一个结构，如下图的红色部分。 这个结构可以看作由若干个上图的红色部分构成。红色部分又可以分为竖和提。竖的部分即字符串下标index(0~nRows)遍历，提的部分即index(nRows-2~0),提的部分不包含第一行和最后一行。12345678910111213141516171819202122232425">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/8573125-6c7ee7159f56f599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zmal.xyz/2019/04/21/Yak/">
+  <link rel="canonical" href="https://zmal.xyz/2019/04/28/zigzag-conversion/">
 
 
 
@@ -126,7 +130,7 @@
   };
 </script>
 
-  <title>Don't Shave That Yak | Neo</title>
+  <title>zigzag-conversion | Neo</title>
   
 
 
@@ -329,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zmal.xyz/2019/04/21/Yak/">
+    <link itemprop="mainEntityOfPage" href="https://zmal.xyz/2019/04/28/zigzag-conversion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Neo">
@@ -346,7 +350,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Don't Shave That Yak
+          <h1 class="post-title" itemprop="name headline">zigzag-conversion
 
               
             
@@ -372,7 +376,7 @@
                 
               
 
-              <time title="创建时间：2019-04-21 22:34:15 / 修改时间：22:51:47" itemprop="dateCreated datePublished" datetime="2019-04-21T22:34:15+08:00">2019-04-21</time>
+              <time title="创建时间：2019-04-28 22:49:25 / 修改时间：23:10:12" itemprop="dateCreated datePublished" datetime="2019-04-28T22:49:25+08:00">2019-04-28</time>
             
 
             
@@ -382,6 +386,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -395,8 +417,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/21/Yak/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/21/Yak/" itemprop="commentCount"></span>
+                <a href="/2019/04/28/zigzag-conversion/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/28/zigzag-conversion/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -404,7 +426,7 @@
 
           
           
-            <span id="/2019/04/21/Yak/" class="leancloud_visitors" data-flag-title="Don't Shave That Yak">
+            <span id="/2019/04/28/zigzag-conversion/" class="leancloud_visitors" data-flag-title="zigzag-conversion">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -435,24 +457,9 @@
       
 
       
-        <p>要做一件事A，就得先做B，但要做B就得先做C，要做C得先做D，最后发现做了一堆与一开始要做的A毫不相干的事。要及时止损啊。</p>
-<p>何为 yak shaving？要去买个水管，得开车出去；但路上要交过桥费；为了避免交过桥费，得去跟邻居借张通行卡；但邻居是不会把卡借给我的，因为前些时候跟他家借的枕头还没还给他；但枕头里的棉絮掉了不少，你得找些替代品填充回去，才敢还给人家；哪里找填充物？去动物园撸 yak （牦牛）身上的毛。所以，为了去买水管，得先去动物园撸 yak 毛。<br><a id="more"></a><br><a href="https://seths.blog/2005/03/dont_shave_that/?utm_source=wanqu.co&amp;utm_campaign=Wanqu+Daily&amp;utm_medium=website" target="_blank" rel="noopener">原文链接</a></p>
-<hr>
-<p>The single best term I’ve learned this year.</p>
-<p>Apparently turned into a computer term by the MIT media lab five years ago, yak shaving was recently referenced by my pal Joi Ito. (Link: Joi Ito’s Web: Yak Shaving)</p>
-<p>I want to give you the non-technical definition, and as is my wont, broaden it a bit.</p>
-<p>Yak Shaving is the last step of a series of steps that occurs when you find something you need to do. “I want to wax the car today.”</p>
-<p>“Oops, the hose is still broken from the winter. I’ll need to buy a new one at Home Depot.”</p>
-<p>“But Home Depot is on the other side of the Tappan Zee bridge and getting there without my EZPass is miserable because of the tolls.”</p>
-<p>“But, wait! I could borrow my neighbor’s EZPass…”</p>
-<p>“Bob won’t lend me his EZPass until I return the mooshi pillow my son borrowed, though.”</p>
-<p>“And we haven’t returned it because some of the stuffing fell out and we need to get some yak hair to restuff it.”</p>
-<p>And the next thing you know, you’re at the zoo, shaving a yak, all so you can wax your car.</p>
-<p>This yak shaving phenomenon tends to hit some people more than others, but what makes it particularly perverse is when groups of people get involved. It’s bad enough when one person gets all up in arms yak shaving, but when you try to get a group of people together, you’re just as likely to end up giving the yak a manicure.</p>
-<p>Which is why solo entrepreneurs and small organizations are so much more likely to get stuff done. They have fewer yaks to shave.</p>
-<p>So, what to do?</p>
-<p>Don’t go to Home Depot for the hose.</p>
-<p>The minute you start walking down a path toward a yak shaving party, it’s worth making a compromise. Doing it well now is much better than doing it perfectly later.</p>
+        <p><img src="https://upload-images.jianshu.io/upload_images/8573125-6c7ee7159f56f599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="如图"></p>
+<p>这道题乍一看没看懂。查了一下才明白，zigzag指的是<code>之 or 反N</code>字型。把竖和提看作一个结构，如下图的红色部分。<br><img src="https://upload-images.jianshu.io/upload_images/8573125-b3b780f8722d6b1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>这个结构可以看作由若干个上图的红色部分构成。红色部分又可以分为竖和提。竖的部分即字符串下标index(0~nRows)遍历，提的部分即index(nRows-2~0),提的部分不包含第一行和最后一行。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//排除特殊情况，即s.isblank() 或者nRows &lt;=1时</span></span><br><span class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span> || numRows &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (numRows == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// StringBuilder 数组，代表第1行到第nRows行</span></span><br><span class="line">    StringBuilder[] rs = <span class="keyword">new</span> StringBuilder[numRows];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rs.length; i++) &#123;</span><br><span class="line">        rs[i] = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// index 是 s 的下标</span></span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> length = s.length();</span><br><span class="line">    <span class="keyword">while</span> (index &lt; length) &#123;</span><br><span class="line">        <span class="comment">// 第一个for循环，处理竖的部分</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows &amp;&amp; index &lt; length; i++) &#123;</span><br><span class="line">            rs[i].append(s.charAt(index++));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 第二个for循环，处理提的部分，j = nRows-2 排除最后一行</span></span><br><span class="line">        <span class="comment">// j &gt; 0（非 &gt;=0）排除第一行，这两行不在提的部分。 </span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = numRows - <span class="number">2</span>; j &gt; <span class="number">0</span> &amp;&amp; index &lt; length; j--) &#123;</span><br><span class="line">            rs[j].append(s.charAt(index++));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 合并StringBuilder</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">        rs[<span class="number">0</span>].append(rs[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> rs[<span class="number">0</span>].toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -487,7 +494,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://zmal.xyz/2019/04/21/Yak/" title="Don't Shave That Yak">https://zmal.xyz/2019/04/21/Yak/</a>
+    <a href="https://zmal.xyz/2019/04/28/zigzag-conversion/" title="zigzag-conversion">https://zmal.xyz/2019/04/28/zigzag-conversion/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -498,6 +505,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+        </div>
+      
 
       
       
@@ -507,8 +520,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/21/提出好问题比得到正确答案更重要/" rel="next" title="提出好问题比得到正确答案更重要">
-                <i class="fa fa-chevron-left"></i> 提出好问题比得到正确答案更重要
+              <a href="/2019/04/21/Yak/" rel="next" title="Don't Shave That Yak">
+                <i class="fa fa-chevron-left"></i> Don't Shave That Yak
               </a>
             
           </div>
@@ -516,10 +529,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/28/zigzag-conversion/" rel="prev" title="zigzag-conversion">
-                zigzag-conversion <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
